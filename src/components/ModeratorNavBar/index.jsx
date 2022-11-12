@@ -147,7 +147,11 @@ export default function ModeratorNavBar() {
                   Dashboard
                 </Typography>
               </MenuItem>
-              <MenuItem key="Account" onClick={handleCloseUserMenu}>
+              <MenuItem
+                key="Account"
+                onClick={handleCloseUserMenu}
+                href={"/moderator/info"}
+              >
                 <Typography
                   textAlign="center"
                   onClick={() => navigate("/moderator/info")}
