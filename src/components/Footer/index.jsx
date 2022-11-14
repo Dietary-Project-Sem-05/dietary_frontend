@@ -4,6 +4,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import "./index.css";
+import logo from "../../assets/footerlogo.png";
 
 export default function Footer() {
   return (
@@ -29,10 +30,16 @@ export default function Footer() {
             </Box>
           </Grid>
           <Grid item xs={4}>
-            <h2>
-              {" "}
-              Company<span> logo</span>
-            </h2>
+            <Box
+              component="img"
+              sx={{
+                height: 150,
+                width: 105,
+                marginLeft: 20,
+              }}
+              alt="Logo"
+              src={logo}
+            />
           </Grid>
         </Grid>
       </Box>
