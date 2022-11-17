@@ -51,7 +51,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/");
+      navigate("/moderator/dashboard");
     }
   }, [navigate, userInfo]);
 
