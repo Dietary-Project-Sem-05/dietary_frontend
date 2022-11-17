@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { blue } from "@mui/material/colors";
-import MenuItem from "@mui/material/MenuItem";
 import logo from "../../assets/logo.png";
 
 const LoginButton = styled(Button)(({ theme }) => ({
@@ -21,23 +20,6 @@ const LoginButton = styled(Button)(({ theme }) => ({
 
 export default function SignNavBar() {
   const navigate = useNavigate();
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   return (
     <AppBar

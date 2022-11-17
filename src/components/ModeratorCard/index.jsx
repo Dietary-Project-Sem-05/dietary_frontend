@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -8,10 +8,14 @@ import userImage from "../../assets/userImage.jpg";
 import Button from "@mui/material/Button";
 
 export default function ModeratorCard(props) {
-  const { name, moderatorID, isActive, acceptedCount, rejectedCount, colour } =
-    props;
-
-  // bgColorput(isRemoved);
+  const {
+    name,
+    moderatorID,
+    isActive,
+    acceptedCount,
+    rejectedCount,
+    colour,
+  } = props;
 
   return (
     <Card

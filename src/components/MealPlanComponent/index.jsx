@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import breakfastImage from "../../assets/breakfast.jpg";
 import lunchImage from "../../assets/lunch.jpg";
 import dinnerImage from "../../assets/dinner.jpg";
-import { fontWeight } from "@mui/system";
 
 const images = [
   {

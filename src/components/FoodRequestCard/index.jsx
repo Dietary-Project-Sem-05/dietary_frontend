@@ -1,12 +1,6 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import {
-  CardActionArea,
-  Grid,
-  Typography,
-  CardContent,
-  Button,
-} from "@mui/material";
+import { Grid, Typography, CardContent, Button } from "@mui/material";
 import HeightBox from "../../components/HeightBox";
 
 export default function FoodRequestCard(props) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Typography, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import HeightBox from "../../components/HeightBox";
 import ModeratorNavBar from "../../components/ModeratorNavBar";
 import FoodRequestCard from "../../components/FoodRequestCard";
@@ -9,14 +9,7 @@ import "./index.css";
 
 export default function ModeratorDashboard() {
   return (
-    <div
-      // style={{
-      //   // "background-image":
-      //   //   "linear-gradient(to right, #1976d2, #90caf9, #fafafa)",
-      //   backgroundColor: "#bbdefb",
-      // }}
-      className="backContainer"
-    >
+    <div className="backContainer">
       <ModeratorNavBar />
       <HeightBox height={10} />
       <Box
@@ -32,7 +25,6 @@ export default function ModeratorDashboard() {
           gutterBottom
           align="left"
           sx={{
-            // fontFamily: "Oswald",
             fontWeight: 700,
             letterSpacing: ".1rem",
             color: "inherit",
