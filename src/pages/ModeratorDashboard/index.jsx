@@ -9,14 +9,7 @@ import "./index.css";
 
 export default function ModeratorDashboard() {
   return (
-    <div
-      // style={{
-      //   // "background-image":
-      //   //   "linear-gradient(to right, #1976d2, #90caf9, #fafafa)",
-      //   backgroundColor: "#bbdefb",
-      // }}
-      className="backContainer"
-    >
+    <div className="backContainer">
       <ModeratorNavBar />
       <HeightBox height={10} />
       <Box

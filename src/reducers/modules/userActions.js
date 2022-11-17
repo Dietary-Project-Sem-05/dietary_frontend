@@ -43,7 +43,7 @@ export const getUserDetails = createAsyncThunk(
           Authorization: `Bearer ${user.userToken}`,
         },
       };
-      const { data } = await axios.get(`/api/user/`, config);
+      const { data } = await axios.get(`/api/user/moderator/dashboard`, config);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {

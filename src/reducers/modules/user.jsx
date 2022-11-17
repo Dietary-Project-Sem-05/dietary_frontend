@@ -33,17 +33,17 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
-    // get user details reducer
-    [getUserDetails.pending]: (state) => {
-      state.loading = true;
-    },
-    [getUserDetails.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.userInfo = payload;
-    },
-    [getUserDetails.rejected]: (state, { payload }) => {
-      state.loading = false;
-    },
+    // // get user details reducer
+    // [getUserDetails.pending]: (state) => {
+    //   state.loading = true;
+    // },
+    // [getUserDetails.fulfilled]: (state, { payload }) => {
+    //   state.loading = false;
+    //   state.userInfo = payload;
+    // },
+    // [getUserDetails.rejected]: (state, { payload }) => {
+    //   state.loading = false;
+    // },
   },
 });
 
