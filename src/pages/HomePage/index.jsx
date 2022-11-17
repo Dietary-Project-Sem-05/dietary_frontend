@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import SignNavBar from "../../components/SignNavBar";
 import AdminNavBar from "../../components/AdminNavBar";
 import HeightBox from "../../components/HeightBox";
 import MealPlanComponent from "../../components/MealPlanComponent";
@@ -9,7 +10,7 @@ import "./index.css";
 export default function HomePage() {
   return (
     <Box>
-      <AdminNavBar />
+      <SignNavBar />
       <Box
         sx={{
           height: 500,
