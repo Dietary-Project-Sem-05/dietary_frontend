@@ -13,8 +13,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../assets/logo.png";
 
-const settings = ["Dashboard", "Account", "Logout"];
-
 export default function ModeratorNavBar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -172,12 +170,6 @@ export default function ModeratorNavBar() {
               <MenuItem key="Logout" onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
-
-              {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"  >{setting}</Typography>
-                </MenuItem>
-              ))} */}
             </Menu>
           </Box>
         </Toolbar>
