@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,7 +11,6 @@ import HeightBox from "../../components/HeightBox";
 import loginImg from "../../assets/login.svg";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Typography } from "antd";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()

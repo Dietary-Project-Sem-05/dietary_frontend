@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import SignNavBar from "../../components/SignNavBar";
-import AdminNavBar from "../../components/AdminNavBar";
 import HeightBox from "../../components/HeightBox";
 import MealPlanComponent from "../../components/MealPlanComponent";
 import Footer from "../../components/Footer";
