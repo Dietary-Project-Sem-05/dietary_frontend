@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./index.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,7 +12,13 @@ import HeightBox from "../../components/HeightBox";
 import loginImg from "../../assets/login.svg";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Typography } from "antd";
+import SnackBarComponent from "../../components/SnackBarComponent";
+import api from "../../api";
+import { loggingRequest } from "../../reducers/modules/user";
+import {
+  setAuthorizationKey,
+  setUserObjectInLocal,
+} from "../../utils/localStorageHelper";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -39,20 +46,55 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function LoginPage() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [snackBarDetails, setSnackBarDetails] = useState({
+    type: "",
+    password: "",
+  });
 
   const initialValues = {
     email: "",
     password: "",
   };
 
+  async function loginUser(values) {
+    setIsLoading(true);
+    try {
+      const [code, res] = await api.user.logInUser(values);
+      if (res?.statusCode === 200) {
+        setAuthorizationKey(res.data.token);
+        setUserObjectInLocal(res.data.user);
+        dispatch(loggingRequest(res.data.user));
+        navigate("/");
+      } else {
+        setSnackBarDetails({ type: "error", message: res?.message });
+        setOpenSnackBar(true);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setSnackBarDetails({
+        type: "Error",
+        message: "Error in logging the user",
+      });
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div>
+      <SnackBarComponent
+        open={openSnackBar}
+        setOpen={setOpenSnackBar}
+        type={snackBarDetails.type}
+        message={snackBarDetails.message}
+      />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit=""
+        onSubmit={loginUser}
       >
         {(formikProps) => {
           const {
@@ -91,6 +133,7 @@ export default function LoginPage() {
                   >
                     <Grid item>
                       <TextField
+                        type="email"
                         size="small"
                         required
                         id="email"
@@ -99,13 +142,13 @@ export default function LoginPage() {
                         variant="outlined"
                         sx={{ width: 300 }}
                         value={values.email}
-                        onChange={handleChange("email")}
+                        error={errors.email}
                         helperText={
                           touched.email && errors.email
                             ? errors.email
                             : "Email is required"
                         }
-                        error={!!errors.email}
+                        onChange={handleChange("email")}
                       />
                     </Grid>
                     <HeightBox height={15} />
@@ -117,14 +160,15 @@ export default function LoginPage() {
                         name="password"
                         label="Password"
                         variant="outlined"
+                        type="password"
                         sx={{ width: 300 }}
                         value={values.password}
+                        error={errors.password}
                         helperText={
                           touched.password
                             ? errors.password
                             : "Password is required"
                         }
-                        error={!!errors.password}
                         onChange={handleChange("password")}
                       />
                     </Grid>
