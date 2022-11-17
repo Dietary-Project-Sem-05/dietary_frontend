@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../reducers/modules/userActions";
+import Error from "../../components/Error";
 import "./index.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,7 +15,6 @@ import HeightBox from "../../components/HeightBox";
 import loginImg from "../../assets/login.svg";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Typography } from "antd";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,6 +44,20 @@ const validationSchema = Yup.object().shape({
 export default function LoginPage() {
   // const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { loading, userInfo, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
+
+  const submitForm = (data) => {
+    dispatch(userLogin(data));
+  };
 
   const initialValues = {
     email: "",
@@ -52,7 +69,7 @@ export default function LoginPage() {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit=""
+        onSubmit={handleSubmit(submitForm)}
       >
         {(formikProps) => {
           const {
@@ -106,6 +123,7 @@ export default function LoginPage() {
                             : "Email is required"
                         }
                         error={!!errors.email}
+                        {...register("email")}
                       />
                     </Grid>
                     <HeightBox height={15} />
@@ -126,6 +144,7 @@ export default function LoginPage() {
                         }
                         error={!!errors.password}
                         onChange={handleChange("password")}
+                        {...register("password")}
                       />
                     </Grid>
                     <HeightBox height={15} />
