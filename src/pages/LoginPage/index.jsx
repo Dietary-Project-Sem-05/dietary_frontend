@@ -64,13 +64,13 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       const [code, res] = await api.user.signInUser(values);
-      if (res.statusCode === 200) {
+      if (res.status === 200) {
         setAuthorizationKey(res.data.token);
         setUserObjectInLocal(res.data.user);
         dispatch(loggingRequest(res.data.user));
         navigate("/moderator/dashboard");
       } else {
-        setSnackBarDetails({ type: "error", message: res.message });
+        setSnackBarDetails({ type: "error", message: res.data });
         setOpenSnackBar(true);
       }
       setIsLoading(false);

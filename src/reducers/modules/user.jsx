@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { USER_DETAILS } from "../../constants";
 
 const userString = localStorage.getItem(USER_DETAILS) || "";
-const userObj = userString ? JSON.parse(userString) : null;
+var userObj;
+if (userString !== "undefined") {
+  userObj = userString ? JSON.parse(userString) : null;
+}
 
 const initialState = {
   auth: userObj ? true : false,

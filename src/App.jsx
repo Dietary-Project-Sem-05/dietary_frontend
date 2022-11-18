@@ -21,7 +21,13 @@ function App() {
       <Route path="/admin/add-moderator" element={<AddModeratorPage />} exact />
       <Route
         path="/login"
-        element={!userAuth.auth ? <LoginPage /> : <Navigate to="/" />}
+        element={
+          !userAuth.auth ? (
+            <LoginPage />
+          ) : (
+            <Navigate to="/moderator/dashboard" />
+          )
+        }
         exact
       />
       <Route

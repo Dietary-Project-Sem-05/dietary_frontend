@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,9 +14,11 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../assets/logo.png";
+import { logOutRequest } from "../../reducers/modules/user";
 
 export default function AdminNavBar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -63,7 +66,6 @@ export default function AdminNavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -122,7 +124,6 @@ export default function AdminNavBar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -189,7 +190,14 @@ export default function AdminNavBar() {
                   Account
                 </Typography>
               </MenuItem>
-              <MenuItem key="Logout" onClick={handleCloseUserMenu}>
+              <MenuItem
+                key="Logout"
+                onClick={() => {
+                  dispatch(logOutRequest());
+                  localStorage.clear();
+                  navigate("/");
+                }}
+              >
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>
