@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminUserInfo from "./pages/AdminUserInfo";
@@ -8,8 +8,10 @@ import AddModeratorPage from "./pages/AddModeratorPage";
 import LoginPage from "./pages/LoginPage";
 import ModeratorDashboard from "./pages/ModeratorDashboard";
 import ModeratorUserInfo from "./pages/ModeratorUserInfo";
+import { useSelector } from "react-redux";
 
 function App() {
+  const userAuth = useSelector((state) => state.user);
   return (
     <Routes>
       <Route path="/" element={<HomePage />} exact />
@@ -17,7 +19,11 @@ function App() {
       <Route path="/admin/info" element={<AdminUserInfo />} exact />
       <Route path="/admin/mod-info" element={<ModeratorInfo />} exact />
       <Route path="/admin/add-moderator" element={<AddModeratorPage />} exact />
-      <Route path="/login" element={<LoginPage />} exact />
+      <Route
+        path="/login"
+        element={!userAuth.auth ? <LoginPage /> : <Navigate to="/" />}
+        exact
+      />
       <Route
         path="/moderator/dashboard"
         element={<ModeratorDashboard />}
