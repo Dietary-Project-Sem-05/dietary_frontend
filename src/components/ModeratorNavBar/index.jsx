@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,9 +13,11 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../assets/logo.png";
+import { logOutRequest } from "../../reducers/modules/user";
 
 export default function ModeratorNavBar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -61,7 +64,6 @@ export default function ModeratorNavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -110,7 +112,6 @@ export default function ModeratorNavBar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -167,7 +168,14 @@ export default function ModeratorNavBar() {
                   Account
                 </Typography>
               </MenuItem>
-              <MenuItem key="Logout" onClick={handleCloseUserMenu}>
+              <MenuItem
+                key="Logout"
+                onClick={() => {
+                  dispatch(logOutRequest());
+                  localStorage.clear();
+                  navigate("/");
+                }}
+              >
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>

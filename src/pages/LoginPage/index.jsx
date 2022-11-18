@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./index.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,6 +12,13 @@ import HeightBox from "../../components/HeightBox";
 import loginImg from "../../assets/login.svg";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
+import SnackBarComponent from "../../components/SnackBarComponent";
+import api from "../../api";
+import { loggingRequest } from "../../reducers/modules/user";
+import {
+  setAuthorizationKey,
+  setUserObjectInLocal,
+} from "../../utils/localStorageHelper";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -38,20 +46,55 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function LoginPage() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [snackBarDetails, setSnackBarDetails] = useState({
+    type: "",
+    message: "",
+  });
 
   const initialValues = {
     email: "",
     password: "",
   };
 
+  async function loginUser(values) {
+    setIsLoading(true);
+    try {
+      const [code, res] = await api.user.signInUser(values);
+      if (res.status === 200) {
+        setAuthorizationKey(res.data.token);
+        setUserObjectInLocal(res.data.user);
+        dispatch(loggingRequest(res.data.user));
+        navigate("/moderator/dashboard");
+      } else {
+        setSnackBarDetails({ type: "error", message: res.data });
+        setOpenSnackBar(true);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setSnackBarDetails({
+        type: "Error",
+        message: "Error in logging the user",
+      });
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div>
+      <SnackBarComponent
+        open={openSnackBar}
+        setOpen={setOpenSnackBar}
+        type={snackBarDetails.type}
+        message={snackBarDetails.message}
+      />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit=""
+        onSubmit={loginUser}
       >
         {(formikProps) => {
           const {
@@ -91,6 +134,7 @@ export default function LoginPage() {
                     <Grid item>
                       <TextField
                         size="small"
+                        type="email"
                         required
                         id="email"
                         name="email"
@@ -104,13 +148,14 @@ export default function LoginPage() {
                             ? errors.email
                             : "Email is required"
                         }
-                        error={!!errors.email}
+                        error={errors.email}
                       />
                     </Grid>
                     <HeightBox height={15} />
                     <Grid item>
                       <TextField
                         size="small"
+                        type="password"
                         required
                         id="password"
                         name="password"
@@ -123,14 +168,14 @@ export default function LoginPage() {
                             ? errors.password
                             : "Password is required"
                         }
-                        error={!!errors.password}
+                        error={errors.password}
                         onChange={handleChange("password")}
                       />
                     </Grid>
                     <HeightBox height={15} />
                     <Button
                       type="submit"
-                      size="small"
+                      // size="medium"
                       variant="contained"
                       sx={{ width: 300, backgroundColor: "#636cff" }}
                       onClick={handleSubmit}
