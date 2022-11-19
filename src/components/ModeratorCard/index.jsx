@@ -6,11 +6,7 @@ import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import userImage from "../../assets/userImage.jpg";
 import Box from "@mui/material/Box";
-import { pink, green } from "@mui/material/colors";
 import Button from "@mui/material/Button";
-import Radio from "@mui/material/Radio";
-import api from "../../api";
-import CircularProgress from "@mui/material/CircularProgress";
 import Modal from "@mui/material/Modal";
 import HeightBox from "../HeightBox";
 import { styled } from "@mui/material/styles";
@@ -20,9 +16,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 700,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  borderRadius: 5,
   boxShadow: 24,
   p: 4,
 };
@@ -41,7 +37,9 @@ const BackButton = styled(Button)({
 export default function ModeratorCard(props) {
   const {
     name,
+    profilepic,
     email,
+    telephoneNo,
     moderatorID,
     isActive,
     acceptedCount,
@@ -49,21 +47,9 @@ export default function ModeratorCard(props) {
     colour,
   } = props;
 
-  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  // async function removeModerator(values) {
-  //   console.log("=========================");
-  //   console.log(values.email);
-  //   console.log("=========================");
-  //   try {
-  //     const user = await api.user.removeUser(values.email);
-  //   } catch (error) {
-  //     console.log("Can't remove user");
-  //   }
-  // }
 
   return (
     <Card
@@ -80,9 +66,9 @@ export default function ModeratorCard(props) {
           <Grid container spacing={2}>
             <Grid item xs={2}>
               <img
-                src={userImage}
+                src={profilepic}
                 alt="dp"
-                style={{ width: 100, height: 100 }}
+                style={{ width: 80, height: 80 }}
               />
             </Grid>
             <Grid item xs={8}>
@@ -113,33 +99,9 @@ export default function ModeratorCard(props) {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid container>
-                <Grid item xs={3}>
-                  <Typography variant="body2" color="text.secondary">
-                    Number of item accepted:
-                  </Typography>
-                </Grid>
-                <Grid item xs={8}>
-                  <Typography variant="body2" color="text.secondary">
-                    {acceptedCount}
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={3}>
-                  <Typography variant="body2" color="text.secondary">
-                    Number of item rejected:
-                  </Typography>
-                </Grid>
-                <Grid item xs={8}>
-                  <Typography variant="body2" color="text.secondary">
-                    {rejectedCount}
-                  </Typography>
-                </Grid>
-              </Grid>
             </Grid>
 
-            <Grid item xs={2} sx={{ marginTop: 5.5 }}>
+            <Grid item xs={2} sx={{ marginTop: 3.5 }}>
               <Button size="small" color="success" onClick={handleOpen}>
                 View Activity Log
               </Button>
@@ -170,10 +132,10 @@ export default function ModeratorCard(props) {
                     </Grid>
                   </Grid>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less normal distribution of letters,
+                    Email: {email}
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Telephone: {telephoneNo}
                   </Typography>
                   <HeightBox height={15} />
                   <Grid container spacing={2}>
@@ -195,7 +157,6 @@ export default function ModeratorCard(props) {
                         variant="contained"
                         fullWidth
                         color="error"
-                        // onClick={removeModerator({ email })}
                       >
                         Remove Moderator
                       </Button>

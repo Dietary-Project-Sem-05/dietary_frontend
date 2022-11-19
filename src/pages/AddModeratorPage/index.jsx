@@ -130,7 +130,10 @@ export default function AddModeratorPage() {
                 alignItems: "center",
               }}
             >
-              <Box className="formContainer" sx={{ width: 600, boxShadow: 3 }}>
+              <Box
+                className="formRegContainer"
+                sx={{ width: 600, boxShadow: 3 }}
+              >
                 <Typography
                   variant="h5"
                   gutterBottom

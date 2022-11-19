@@ -11,6 +11,7 @@ import api from "../../api";
 import { useState, useEffect } from "react";
 
 export default function ModeratorInfo() {
+  const navigate = useNavigate();
   const [modList, setModList] = useState([]);
   useEffect(() => {
     (async () => {
@@ -18,7 +19,6 @@ export default function ModeratorInfo() {
       setModList(users[1].data);
     })();
   }, []);
-  const navigate = useNavigate();
 
   return (
     <Box sx={{ backgroundColor: "#F7F7F7" }}>
@@ -65,6 +65,8 @@ export default function ModeratorInfo() {
             if (e.role === "MODERATOR") {
               return (
                 <ModeratorCard
+                  telephoneNo={e.telephoneNo}
+                  profilepic={e.photo}
                   name={e.firstName + " " + e.lastName}
                   email={e.email}
                   moderatorID={e.moderatorId}
@@ -77,7 +79,7 @@ export default function ModeratorInfo() {
           })}
         </Box>
 
-        <Box>
+        {/* <Box>
           <Typography
             variant="h4"
             noWrap
@@ -130,7 +132,7 @@ export default function ModeratorInfo() {
             rejectedCount={2}
             colour="#e0e0e0"
           />
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

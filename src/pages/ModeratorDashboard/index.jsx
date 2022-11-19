@@ -33,10 +33,8 @@ export default function ModeratorDashboard() {
           Food Requests
         </Typography>
         <Box
-          className="requestContainer"
           sx={{
             borderRadius: 2,
-            boxShadow: 1,
           }}
         >
           <Typography
@@ -81,14 +79,11 @@ export default function ModeratorDashboard() {
                   This file can be executed with the following command:"
             foodImage={foodImg}
           />
-          <Button size="medium">..See more</Button>
         </Box>
         <HeightBox height={30} />
         <Box
-          className="requestContainer"
           sx={{
             borderRadius: 2,
-            boxShadow: 1,
           }}
         >
           <Typography
@@ -135,7 +130,6 @@ export default function ModeratorDashboard() {
             foodImage={foodImg}
             isApproved={true}
           />
-          <Button size="medium">..See more</Button>
         </Box>
         <HeightBox height={30} />
       </Box>
