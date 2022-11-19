@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import HeightBox from "../../components/HeightBox";
 import ModeratorNavBar from "../../components/ModeratorNavBar";
 import FoodRequestCard from "../../components/FoodRequestCard";
 import MarkedFoodCard from "../../components/MarkedFoodCard";
 import foodImg from "../../assets/food1.jpg";
+import api from "../../api";
 import "./index.css";
 
 export default function ModeratorDashboard() {
+  const [foodList, setFoodList] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const foods = await api.food.getAllFoods();
+      setFoodList(foods[1].data);
+    })();
+  }, []);
+
   return (
     <div className="backContainer">
       <ModeratorNavBar />
@@ -48,37 +57,18 @@ export default function ModeratorDashboard() {
           >
             Recent Food Requests
           </Typography>
-
-          <FoodRequestCard
-            foodName="Rice"
-            calories={34.5}
-            description="Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  AntarcticaThe compiler will create another file named
-                  Simple.class, which contains the translated Java byte code.
-                  This file can be executed with the following command:"
-            foodImage={foodImg}
-          />
-          <FoodRequestCard
-            foodName="Rice"
-            calories={34.5}
-            description="Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  AntarcticaThe compiler will create another file named
-                  Simple.class, which contains the translated Java byte code.
-                  This file can be executed with the following command:"
-            foodImage={foodImg}
-          />
-          <FoodRequestCard
-            foodName="Rice"
-            calories={34.5}
-            description="Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  AntarcticaThe compiler will create another file named
-                  Simple.class, which contains the translated Java byte code.
-                  This file can be executed with the following command:"
-            foodImage={foodImg}
-          />
+          {foodList.map((food) => {
+            if (food.state === 0) {
+              return (
+                <FoodRequestCard
+                  foodName={food.name}
+                  calories={food.calory}
+                  category={food.foodCategory}
+                  foodImage={foodImg}
+                />
+              );
+            }
+          })}
         </Box>
         <HeightBox height={30} />
         <Box
@@ -97,39 +87,25 @@ export default function ModeratorDashboard() {
           >
             Marked Food Requests
           </Typography>
-          <MarkedFoodCard
-            foodName="Rice"
-            calories={34.5}
-            description="Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  AntarcticaThe compiler will create another file named
-                  Simple.class, which contains the translated Java byte code.
-                  This file can be executed with the following command:"
-            foodImage={foodImg}
-            isApproved={true}
-          />
-          <MarkedFoodCard
-            foodName="Rice"
-            calories={34.5}
-            description="Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  AntarcticaThe compiler will create another file named
-                  Simple.class, which contains the translated Java byte code.
-                  This file can be executed with the following command:"
-            foodImage={foodImg}
-            isApproved={false}
-          />
-          <MarkedFoodCard
-            foodName="Rice"
-            calories={34.5}
-            description="Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  AntarcticaThe compiler will create another file named
-                  Simple.class, which contains the translated Java byte code.
-                  This file can be executed with the following command:"
-            foodImage={foodImg}
-            isApproved={true}
-          />
+          {foodList.map((food) => {
+            if (food.state !== 0) {
+              var approved;
+              if (food.state === 1) {
+                approved = true;
+              } else if (food.state === 2) {
+                approved = false;
+              }
+              return (
+                <MarkedFoodCard
+                  foodName={food.name}
+                  calories={food.calory}
+                  category={food.foodCategory}
+                  foodImage={foodImg}
+                  isApproved={approved}
+                />
+              );
+            }
+          })}
         </Box>
         <HeightBox height={30} />
       </Box>

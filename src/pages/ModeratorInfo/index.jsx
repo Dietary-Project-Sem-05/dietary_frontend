@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminNavBar from "../../components/AdminNavBar";
 import Box from "@mui/material/Box";
@@ -8,7 +8,6 @@ import ModeratorCard from "../../components/ModeratorCard";
 import HeightBox from "../../components/HeightBox";
 import "./index.css";
 import api from "../../api";
-import { useState, useEffect } from "react";
 
 export default function ModeratorInfo() {
   const navigate = useNavigate();
