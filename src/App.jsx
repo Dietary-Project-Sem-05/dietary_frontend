@@ -24,6 +24,8 @@ function App() {
         element={
           !userAuth.auth ? (
             <LoginPage />
+          ) : userAuth.role === "ADMIN" ? (
+            <Navigate to="/admin/dashboard" />
           ) : (
             <Navigate to="/moderator/dashboard" />
           )

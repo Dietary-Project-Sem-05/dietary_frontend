@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminNavBar from "../../components/AdminNavBar";
 import Box from "@mui/material/Box";
@@ -7,9 +7,17 @@ import Typography from "@mui/material/Typography";
 import ModeratorCard from "../../components/ModeratorCard";
 import HeightBox from "../../components/HeightBox";
 import "./index.css";
+import api from "../../api";
 
 export default function ModeratorInfo() {
   const navigate = useNavigate();
+  const [modList, setModList] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const users = await api.user.getAllUsers();
+      setModList(users[1].data);
+    })();
+  }, []);
 
   return (
     <Box sx={{ backgroundColor: "#F7F7F7" }}>
@@ -52,37 +60,25 @@ export default function ModeratorInfo() {
         </Box>
         <HeightBox height={15} />
         <Box>
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
+          {modList.map((e) => {
+            if (e.role === "MODERATOR") {
+              return (
+                <ModeratorCard
+                  telephoneNo={e.telephoneNo}
+                  profilepic={e.photo}
+                  name={e.firstName + " " + e.lastName}
+                  email={e.email}
+                  moderatorID={e.moderatorId}
+                  isActive={e.isActive}
+                  acceptedCount={22}
+                  rejectedCount={2}
+                />
+              );
+            }
+          })}
         </Box>
 
-        <Box>
+        {/* <Box>
           <Typography
             variant="h4"
             noWrap
@@ -106,7 +102,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
@@ -114,7 +110,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
@@ -122,7 +118,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
@@ -130,12 +126,12 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
           />
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

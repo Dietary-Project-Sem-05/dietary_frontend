@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { styled } from "@mui/material/styles";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import Box from "@mui/material/Box";
@@ -12,11 +12,6 @@ import HeightBox from "../../components/HeightBox";
 import Grid from "@mui/material/Grid";
 import AdminNavBar from "../../components/AdminNavBar";
 import api from "../../api";
-import { loggingRequest } from "../../reducers/modules/user";
-import {
-  setAuthorizationKey,
-  setUserObjectInLocal,
-} from "../../utils/localStorageHelper";
 import "./index.css";
 
 const validationSchema = Yup.object().shape({
@@ -56,9 +51,19 @@ const validationSchema = Yup.object().shape({
     ),
 });
 
+const BackButton = styled(Button)({
+  "&:hover": {
+    backgroundColor: "#424242",
+    boxShadow: "none",
+  },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#616161",
+  },
+});
+
 export default function AddModeratorPage() {
   const [isLoading, setLoading] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
@@ -125,7 +130,10 @@ export default function AddModeratorPage() {
                 alignItems: "center",
               }}
             >
-              <Box className="formContainer" sx={{ width: 600, boxShadow: 3 }}>
+              <Box
+                className="formRegContainer"
+                sx={{ width: 600, boxShadow: 3 }}
+              >
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -240,17 +248,32 @@ export default function AddModeratorPage() {
                     />
                   </Grid>
                   <HeightBox height={15} />
-                  <Button
-                    type="submit"
-                    size="small"
-                    variant="contained"
-                    fullWidth
-                    disabled={isLoading}
-                    sx={{ backgroundColor: "#636cff" }}
-                    onClick={handleSubmit}
-                  >
-                    {isLoading ? <CircularProgress /> : "Add Moderator"}
-                  </Button>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <BackButton
+                        size="small"
+                        variant="contained"
+                        fullWidth
+                        sx={{ backgroundColor: "#616161" }}
+                        onClick={() => navigate("/admin/mod-info")}
+                      >
+                        BACK
+                      </BackButton>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Button
+                        type="submit"
+                        size="small"
+                        variant="contained"
+                        fullWidth
+                        disabled={isLoading}
+                        sx={{ backgroundColor: "#636cff" }}
+                        onClick={handleSubmit}
+                      >
+                        {isLoading ? <CircularProgress /> : "Add Moderator"}
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Box>
             </Box>

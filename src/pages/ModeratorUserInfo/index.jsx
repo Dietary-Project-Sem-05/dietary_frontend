@@ -1,6 +1,6 @@
 import React from "react";
 import ModeratorNavBar from "../../components/ModeratorNavBar";
-import { Button, FormLabel, Input, FormControl, Icon } from "@mui/material";
+import { Button, FormLabel, Input, FormControl } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import styled from "./index.module.css";
 

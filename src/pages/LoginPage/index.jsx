@@ -68,7 +68,11 @@ export default function LoginPage() {
         setAuthorizationKey(res.data.token);
         setUserObjectInLocal(res.data.user);
         dispatch(loggingRequest(res.data.user));
-        navigate("/moderator/dashboard");
+        if (res.data.user.role === "ADMIN") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/moderator/dashboard");
+        }
       } else {
         setSnackBarDetails({ type: "error", message: res.data });
         setOpenSnackBar(true);
