@@ -68,7 +68,7 @@ export default function ModeratorInfo() {
                   name={e.firstName + " " + e.lastName}
                   email={e.email}
                   moderatorID={e.moderatorId}
-                  isActive={e.isActive.toString()}
+                  isActive={e.isActive}
                   acceptedCount={22}
                   rejectedCount={2}
                 />
@@ -101,7 +101,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
@@ -109,7 +109,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
@@ -117,7 +117,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"
@@ -125,7 +125,7 @@ export default function ModeratorInfo() {
           <ModeratorCard
             name="Nimesh Rathnayake"
             moderatorID="19021"
-            isActive="No"
+            isActive={false}
             acceptedCount={22}
             rejectedCount={2}
             colour="#e0e0e0"

@@ -6,7 +6,9 @@ import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import userImage from "../../assets/userImage.jpg";
 import Box from "@mui/material/Box";
+import { pink, green } from "@mui/material/colors";
 import Button from "@mui/material/Button";
+import Radio from "@mui/material/Radio";
 import api from "../../api";
 import CircularProgress from "@mui/material/CircularProgress";
 import Modal from "@mui/material/Modal";
@@ -107,7 +109,7 @@ export default function ModeratorCard(props) {
                 </Grid>
                 <Grid item xs={8}>
                   <Typography variant="body2" color="text.secondary">
-                    {isActive}
+                    {isActive === true ? "Yes" : "No"}
                   </Typography>
                 </Grid>
               </Grid>
