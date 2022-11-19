@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AdminNavBar from "../../components/AdminNavBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
 import ModeratorCard from "../../components/ModeratorCard";
 import HeightBox from "../../components/HeightBox";
 import "./index.css";
 
 export default function ModeratorInfo() {
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ backgroundColor: "#F7F7F7" }}>
       <AdminNavBar />
+
       <Box
         sx={{
           paddingLeft: 10,
@@ -20,7 +23,11 @@ export default function ModeratorInfo() {
         }}
       >
         <Box sx={{ textAlign: "end" }}>
-          <Button variant="outlined" size="small" startIcon={<AddIcon />}>
+          <Button
+            onClick={() => navigate("/admin/add-moderator")}
+            variant="outlined"
+            size="small"
+          >
             Add New Add Moderator
           </Button>
         </Box>
