@@ -7,6 +7,8 @@ import Grid from "@mui/material/Grid";
 import userImage from "../../assets/userImage.jpg";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import api from "../../api";
+import CircularProgress from "@mui/material/CircularProgress";
 import Modal from "@mui/material/Modal";
 import HeightBox from "../HeightBox";
 import { styled } from "@mui/material/styles";
@@ -37,6 +39,7 @@ const BackButton = styled(Button)({
 export default function ModeratorCard(props) {
   const {
     name,
+    email,
     moderatorID,
     isActive,
     acceptedCount,
@@ -44,9 +47,21 @@ export default function ModeratorCard(props) {
     colour,
   } = props;
 
+  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // async function removeModerator(values) {
+  //   console.log("=========================");
+  //   console.log(values.email);
+  //   console.log("=========================");
+  //   try {
+  //     const user = await api.user.removeUser(values.email);
+  //   } catch (error) {
+  //     console.log("Can't remove user");
+  //   }
+  // }
 
   return (
     <Card
@@ -178,6 +193,7 @@ export default function ModeratorCard(props) {
                         variant="contained"
                         fullWidth
                         color="error"
+                        // onClick={removeModerator({ email })}
                       >
                         Remove Moderator
                       </Button>

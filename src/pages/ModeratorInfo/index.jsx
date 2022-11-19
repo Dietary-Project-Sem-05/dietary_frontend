@@ -7,9 +7,19 @@ import Typography from "@mui/material/Typography";
 import ModeratorCard from "../../components/ModeratorCard";
 import HeightBox from "../../components/HeightBox";
 import "./index.css";
+import api from "../../api";
+import { useState, useEffect } from "react";
 
 export default function ModeratorInfo() {
+  const [modList, setModList] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const users = await api.user.getAllUsers();
+      setModList(users[1].data);
+    })();
+  }, []);
   const navigate = useNavigate();
+
   return (
     <Box sx={{ backgroundColor: "#F7F7F7" }}>
       <AdminNavBar />
@@ -51,34 +61,20 @@ export default function ModeratorInfo() {
         </Box>
         <HeightBox height={15} />
         <Box>
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
-          <ModeratorCard
-            name="Kasun Madushanka"
-            moderatorID="11002"
-            isActive="Yes"
-            acceptedCount={22}
-            rejectedCount={2}
-          />
+          {modList.map((e) => {
+            if (e.role === "MODERATOR") {
+              return (
+                <ModeratorCard
+                  name={e.firstName + " " + e.lastName}
+                  email={e.email}
+                  moderatorID={e.moderatorId}
+                  isActive={e.isActive.toString()}
+                  acceptedCount={22}
+                  rejectedCount={2}
+                />
+              );
+            }
+          })}
         </Box>
 
         <Box>

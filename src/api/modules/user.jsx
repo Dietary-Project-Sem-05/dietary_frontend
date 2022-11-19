@@ -5,10 +5,15 @@ export default {
     return resolver(axiosClient.post("/user/login", data));
   },
   signUpUser(data) {
-    console.log(data);
     return resolver(axiosClient.post("/user/admin/add-moderator", data));
   },
   getUser(userId) {
     return resolver(axiosClient.get(`/user/${userId}`));
+  },
+  getAllUsers() {
+    return resolver(axiosClient.get("/user/admin/mod-info"));
+  },
+  removeUser() {
+    return resolver(axiosClient.delete("/user/admin/mod-info"));
   },
 };
