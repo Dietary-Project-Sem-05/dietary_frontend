@@ -1,7 +1,7 @@
 import React from "react";
 import AdminNavBar from "../../components/AdminNavBar";
 import styled from "./index.module.css";
-import { Button, FormLabel, Input, FormControl, Icon } from "@mui/material";
+import { Button, FormLabel, Input, FormControl } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
 export default function AdminUserInfo() {

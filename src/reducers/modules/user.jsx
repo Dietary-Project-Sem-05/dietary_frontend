@@ -14,6 +14,7 @@ const initialState = {
   lastName: userObj ? userObj.lastName : "",
   email: userObj ? userObj.email : "",
   username: userObj ? userObj.username : "",
+  role: userObj ? userObj.role : "",
 };
 
 export const userSlice = createSlice({
@@ -27,6 +28,7 @@ export const userSlice = createSlice({
       state.lastName = action.payload.lastName;
       state.email = action.payload.email;
       state.username = action.payload.username;
+      state.role = action.payload.role;
     },
 
     logOutRequest: (state) => {
@@ -36,6 +38,7 @@ export const userSlice = createSlice({
       state.lastName = "";
       state.email = "";
       state.username = "";
+      state.role = "";
     },
   },
 });
