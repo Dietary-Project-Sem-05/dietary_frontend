@@ -5,7 +5,8 @@ export default {
     return resolver(axiosClient.post("/user/login", data));
   },
   signUpUser(data) {
-    return resolver(axiosClient.post("/user/signup", data));
+    console.log(data);
+    return resolver(axiosClient.post("/user/admin/add-moderator", data));
   },
   getUser(userId) {
     return resolver(axiosClient.get(`/user/${userId}`));
