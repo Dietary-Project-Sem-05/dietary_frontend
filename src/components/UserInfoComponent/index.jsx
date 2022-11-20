@@ -85,7 +85,7 @@ export default function ProfilePage() {
                 </MDBCol>
                 <MDBCol sm="9">
                   <MDBCardText className="text-muted">
-                    example@example.com
+                    chamod@gmail.com
                   </MDBCardText>
                 </MDBCol>
               </MDBRow>
@@ -117,7 +117,7 @@ export default function ProfilePage() {
                   <MDBCardText>Password</MDBCardText>
                 </MDBCol>
                 <MDBCol sm="9">
-                  <MDBCardText className="text-muted">Medwdwf$#5s</MDBCardText>
+                  <MDBCardText className="text-muted">**********</MDBCardText>
                 </MDBCol>
               </MDBRow>
             </MDBCardBody>
