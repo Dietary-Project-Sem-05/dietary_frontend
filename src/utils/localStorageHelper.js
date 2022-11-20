@@ -1,4 +1,4 @@
-import { TOKEN_KEY, USER_DETAILS } from "../constants";
+import { TOKEN_KEY, USER_DETAILS } from "../constants/index.jsx";
 
 export function setAuthorizationKey(token) {
   const key = `Bearer ${token}`;
