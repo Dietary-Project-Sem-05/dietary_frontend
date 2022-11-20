@@ -16,4 +16,8 @@ export default {
   removeUser() {
     return resolver(axiosClient.delete("/user/admin/mod-info"));
   },
+  updateIsActive(email, isActive) {
+    const data = { email: email, isActive: isActive };
+    return resolver(axiosClient.post("/user/admin/mod-info", data));
+  },
 };

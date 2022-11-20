@@ -58,9 +58,23 @@ export default function ModeratorDashboard() {
             Recent Food Requests
           </Typography>
           {foodList.map((food) => {
-            if (food.state === 0) {
+            if (foodList.length === 0) {
+              return (
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  align="left"
+                  sx={{
+                    fontWeight: 550,
+                  }}
+                >
+                  There is no Food Requests right now!
+                </Typography>
+              );
+            } else if (food.state === 0) {
               return (
                 <FoodRequestCard
+                  foodId={food.id}
                   foodName={food.name}
                   calories={food.calory}
                   category={food.foodCategory}
