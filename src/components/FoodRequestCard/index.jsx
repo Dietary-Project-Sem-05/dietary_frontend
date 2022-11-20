@@ -9,7 +9,7 @@ export default function FoodRequestCard(props) {
 
   async function acceptFood() {
     try {
-      const updateFood = await api.food.updateState(foodId, 1);
+      await api.food.updateState(foodId, 1);
       window.location.reload(false);
     } catch (error) {
       throw error;
@@ -18,7 +18,7 @@ export default function FoodRequestCard(props) {
 
   async function rejectFood() {
     try {
-      const updateFood = await api.food.updateState(foodId, 2);
+      await api.food.updateState(foodId, 2);
       window.location.reload(false);
     } catch (error) {
       throw error;
