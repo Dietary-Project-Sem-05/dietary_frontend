@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import HeightBox from "../../components/HeightBox";
 import ModeratorNavBar from "../../components/ModeratorNavBar";
 import FoodRequestCard from "../../components/FoodRequestCard";
