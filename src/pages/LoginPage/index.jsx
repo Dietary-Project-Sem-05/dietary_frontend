@@ -188,9 +188,6 @@ export default function LoginPage() {
                       {isLoading ? <CircularProgress /> : "LOGIN"}
                     </Button>
                     <HeightBox height={5} />
-                    <Link href="#" variant="body2" onClick={() => {}}>
-                      Forgot password?
-                    </Link>
                   </Grid>
                 </form>
               </Box>
