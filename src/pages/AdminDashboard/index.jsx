@@ -22,7 +22,7 @@ export default function AdminDashboard() {
           marginTop: 5,
           borderRadius: 5,
           boxShadow: 3,
-          paddingBottom: 10,
+          paddingBottom: 5,
         }}
         className="outContainer"
       >
