@@ -61,7 +61,24 @@ export default function ModeratorInfo() {
         <HeightBox height={15} />
         <Box>
           {modList.map((e) => {
-            if (e.role === "MODERATOR") {
+            if (
+              modList.length === 0 &&
+              e.role === "MODERATOR" &&
+              e.isActive === true
+            ) {
+              return (
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  align="left"
+                  sx={{
+                    fontWeight: 550,
+                  }}
+                >
+                  There is no Moderators!
+                </Typography>
+              );
+            } else if (e.role === "MODERATOR" && e.isActive === true) {
               return (
                 <ModeratorCard
                   telephoneNo={e.telephoneNo}
@@ -78,7 +95,7 @@ export default function ModeratorInfo() {
           })}
         </Box>
 
-        {/* <Box>
+        <Box>
           <Typography
             variant="h4"
             noWrap
@@ -99,39 +116,41 @@ export default function ModeratorInfo() {
         </Box>
 
         <Box>
-          <ModeratorCard
-            name="Nimesh Rathnayake"
-            moderatorID="19021"
-            isActive={false}
-            acceptedCount={22}
-            rejectedCount={2}
-            colour="#e0e0e0"
-          />
-          <ModeratorCard
-            name="Nimesh Rathnayake"
-            moderatorID="19021"
-            isActive={false}
-            acceptedCount={22}
-            rejectedCount={2}
-            colour="#e0e0e0"
-          />
-          <ModeratorCard
-            name="Nimesh Rathnayake"
-            moderatorID="19021"
-            isActive={false}
-            acceptedCount={22}
-            rejectedCount={2}
-            colour="#e0e0e0"
-          />
-          <ModeratorCard
-            name="Nimesh Rathnayake"
-            moderatorID="19021"
-            isActive={false}
-            acceptedCount={22}
-            rejectedCount={2}
-            colour="#e0e0e0"
-          />
-        </Box> */}
+          {modList.map((e) => {
+            if (
+              modList.length === 0 &&
+              e.role === "MODERATOR" &&
+              e.isActive === false
+            ) {
+              return (
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  align="left"
+                  sx={{
+                    fontWeight: 550,
+                  }}
+                >
+                  There is no removed Moderators!
+                </Typography>
+              );
+            } else if (e.role === "MODERATOR" && e.isActive === false) {
+              return (
+                <ModeratorCard
+                  telephoneNo={e.telephoneNo}
+                  profilepic={e.photo}
+                  name={e.firstName + " " + e.lastName}
+                  email={e.email}
+                  moderatorID={e.moderatorId}
+                  isActive={e.isActive}
+                  acceptedCount={22}
+                  rejectedCount={2}
+                  colour="#e0e0e0"
+                />
+              );
+            }
+          })}
+        </Box>
       </Box>
     </Box>
   );

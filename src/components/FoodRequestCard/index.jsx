@@ -2,9 +2,28 @@ import React from "react";
 import Card from "@mui/material/Card";
 import { Grid, Typography, CardContent, Button } from "@mui/material";
 import HeightBox from "../../components/HeightBox";
+import api from "../../api";
 
 export default function FoodRequestCard(props) {
-  const { foodName, calories, category, foodImage } = props;
+  const { foodId, foodName, calories, category, foodImage } = props;
+
+  async function acceptFood() {
+    try {
+      const updateFood = await api.food.updateState(foodId, 1);
+      window.location.reload(false);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async function rejectFood() {
+    try {
+      const updateFood = await api.food.updateState(foodId, 2);
+      window.location.reload(false);
+    } catch (error) {
+      throw error;
+    }
+  }
 
   return (
     <Card
@@ -56,7 +75,12 @@ export default function FoodRequestCard(props) {
           <Grid item xs={3} spacing={4} sx={{ marginTop: 5 }}>
             <Grid container sx={{ marginLeft: 6 }}>
               <Grid item xs={4}>
-                <Button variant="contained" size="small" color="success">
+                <Button
+                  variant="contained"
+                  size="small"
+                  color="success"
+                  onClick={acceptFood}
+                >
                   Approve
                 </Button>
               </Grid>
@@ -66,6 +90,7 @@ export default function FoodRequestCard(props) {
                   size="small"
                   color="error"
                   style={{ minWidth: 90, maxWidth: 90 }}
+                  onClick={rejectFood}
                 >
                   Reject
                 </Button>

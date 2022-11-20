@@ -16,14 +16,19 @@ export default function Footer() {
               About Dietary
             </Typography>
             <Typography variant="body2" gutterBottom sx={{ color: "#ffffff" }}>
-              Ut congue augue non tellus bibendum, in varius tellus condimentum.
-              In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed
-              sed est ut sapien ultrices eleifend. Integer tellus est, vehicula
-              eu lectus tincidunt, ultricies feugiat leo. Suspendisse tellus
-              elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh
-              mollis, tristique ante sed, viverra massa.
+              We are team of 3rd year undergraduates of University of Moratuwa,
+              Sri Lanka studying Computer Science and Engineering. <br />
+              We developed this mobile diet consultation project for Semester 5
+              : Software Engineering Project.
             </Typography>
             <Box className="icons">
+              <Typography
+                variant="body2"
+                gutterBottom
+                sx={{ color: "#ffffff" }}
+              >
+                Contact us:
+              </Typography>
               <FacebookIcon sx={{ color: "#fff" }} />
               <TwitterIcon sx={{ color: "#fff" }} />
               <InstagramIcon sx={{ color: "#fff" }} />

@@ -35,13 +35,13 @@ export default function HomePage() {
         </Typography>
         <HeightBox height={10} />
         <Box align="center" sx={{ opacity: 0.7 }}>
+          <Typography variant="h6" gutterBottom align="center">
+            Unlock your potential with good nutrition.
+          </Typography>
           <Typography variant="body2" gutterBottom align="center">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            A nutritious diet may hasten a user's recovery in the event of
+            illness. A good diet can assist a user who is overweight or obese in
+            losing, gaining or maintaining weight as well.
           </Typography>
         </Box>
       </Box>
