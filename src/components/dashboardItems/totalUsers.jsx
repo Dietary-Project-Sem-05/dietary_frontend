@@ -15,7 +15,12 @@ export const TotalUsers = (props) => (
     <CardContent>
       <Grid container spacing={3} sx={{ justifyContent: "space-between" }}>
         <Grid item>
-          <Typography color="textSecondary" gutterBottom variant="overline">
+          <Typography
+            color="textSecondary"
+            gutterBottom
+            variant="overline"
+            data-testid="total_users"
+          >
             TOTAL USERS
           </Typography>
           <Typography color="textPrimary" variant="h4">

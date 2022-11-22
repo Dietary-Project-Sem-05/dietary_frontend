@@ -29,7 +29,9 @@ export default function ProfilePage() {
                 style={{ width: "150px" }}
                 fluid
               />
-              <p className="text-muted mb-1">Chamod Madhusanka</p>
+              <p className="text-muted mb-1" data-testid="user_info_page">
+                Chamod Madhusanka
+              </p>
               <p className="text-muted mb-4">chamod@gmail.com</p>
               <MDBBtn>Change Profile Photo</MDBBtn>
             </MDBCardBody>

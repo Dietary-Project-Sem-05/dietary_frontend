@@ -28,7 +28,11 @@ export default function MarkedFoodCard(props) {
             </Typography>
             <Grid container>
               <Grid item xs={2}>
-                <Typography variant="body2" color="text.primary">
+                <Typography
+                  variant="body2"
+                  color="text.primary"
+                  data-testid="marked_food_card"
+                >
                   Calories:
                 </Typography>
               </Grid>
