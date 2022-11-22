@@ -8,7 +8,7 @@ import logo from "../../assets/footerlogo.png";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" data-testid="footer">
       <Box sx={{ paddingLeft: 10, paddingRight: 10 }}>
         <Grid container spacing={4}>
           <Grid item xs={8}>

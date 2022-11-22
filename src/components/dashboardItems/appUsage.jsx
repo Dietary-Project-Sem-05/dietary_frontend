@@ -77,6 +77,7 @@ export function AppUsage(props) {
         }
         sx={{ textAlign: "left" }}
         title="App Usage"
+        data-testid="app_usage"
       />
       <Divider />
       <CardContent>

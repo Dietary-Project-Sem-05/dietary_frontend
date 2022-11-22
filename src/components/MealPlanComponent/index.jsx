@@ -93,6 +93,7 @@ export default function MealPlanComponent() {
   return (
     <Box
       sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
+      data-testid="meal_plan_component"
     >
       {images.map((image) => (
         <ImageButton

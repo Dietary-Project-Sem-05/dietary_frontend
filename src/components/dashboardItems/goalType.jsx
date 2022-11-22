@@ -77,7 +77,7 @@ export function GoalType(props) {
 
   return (
     <Card {...props}>
-      <CardHeader title="Classification by Goal" />
+      <CardHeader title="Classification by Goal" data-testid="goal_type" />
       <Divider />
       <CardContent>
         <Box

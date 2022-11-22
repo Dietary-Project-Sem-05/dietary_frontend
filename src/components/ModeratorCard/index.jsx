@@ -86,7 +86,11 @@ export default function ModeratorCard(props) {
               </Typography>
               <Grid container>
                 <Grid item xs={3}>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    data-testid="moderator_card"
+                  >
                     Moderator ID:
                   </Typography>
                 </Grid>
