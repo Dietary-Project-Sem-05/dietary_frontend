@@ -128,7 +128,7 @@ export default function LoginPage() {
                   />
                   <h1>DIETARY</h1>
                 </Box>
-                <form data-testid="form">
+                <form data-testid="login">
                   <Grid
                     container
                     alignItems="center"

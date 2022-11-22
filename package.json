@@ -9,8 +9,6 @@
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.7",
     "@reduxjs/toolkit": "^1.9.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "antd": "^4.23.3",
     "axios": "^0.27.2",
     "faker": "^5.5.3",
@@ -54,7 +52,9 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^8.19.0",
-    "@testing-library/user-event": "github:testing-library/user-event",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "jest-fetch-mock": "^3.0.3"
   }
 }

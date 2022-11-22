@@ -142,6 +142,7 @@ export default function AddModeratorPage() {
                     fontWeight: 600,
                     color: "#000000",
                   }}
+                  data-testid="add_moderator"
                 >
                   Moderator details
                 </Typography>

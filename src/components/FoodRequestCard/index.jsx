@@ -36,7 +36,7 @@ export default function FoodRequestCard(props) {
         marginBottom: 2,
       }}
     >
-      <CardContent>
+      <CardContent data-testid="food_request_card">
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <img src={foodImage} alt="dp" style={{ width: 105, height: 105 }} />
