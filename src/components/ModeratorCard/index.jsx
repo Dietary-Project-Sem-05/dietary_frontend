@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import HeightBox from "../HeightBox";
 import { styled } from "@mui/material/styles";
+import userImage from "../../assets/userImage.jpg";
 import api from "../../api";
 
 const style = {
@@ -74,11 +75,7 @@ export default function ModeratorCard(props) {
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={2}>
-              <img
-                src={profilepic}
-                alt="dp"
-                style={{ width: 80, height: 80 }}
-              />
+              <img src={userImage} alt="dp" style={{ width: 80, height: 80 }} />
             </Grid>
             <Grid item xs={8}>
               <Typography gutterBottom variant="h5" component="div">
